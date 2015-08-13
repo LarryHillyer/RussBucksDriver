@@ -1,0 +1,40 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site.Mobile.master.vb" Inherits="RussBucksDriver.Site_Mobile" %>
+
+<%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+
+        <h2 class="pageTitle">RussBucks Cron Job Creator</h2> 
+        <asp:LoginView runat="server" ViewStateMode="Disabled">
+           <AnonymousTemplate>             
+              <a runat="server" href="~/Account/Login">Log in</a>
+                                 
+           </AnonymousTemplate>
+           <LoggedInTemplate>              
+              <a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.Name%>!</a></li>
+              <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" /></li>                    
+          </LoggedInTemplate>
+        </asp:LoginView><br /><br />
+        <a runat="server" href="~/Administration/CreateJob.aspx">Create CronJob</a>&nbsp;&nbsp;
+        <a runat="server" href="~/Administration/KillCronJob.aspx">Kill Job</a><br />
+        <br />
+        <a runat="server" href="~/Administration/CreateLicensee.aspx">Create Licensee</a>&nbsp;&nbsp;
+        <a runat="server" href="~/Administration/TestDriver.aspx">Administration</a><br />                          
+        <section class="content-wrapper main-content clear-fix">
+            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+        </section>
+        <friendlyUrls:ViewSwitcher ID="ViewSwitcher1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>
+
